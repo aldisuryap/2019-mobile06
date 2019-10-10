@@ -52,7 +52,7 @@ public class BrocaIndexFragment extends Fragment {
                        int height = Integer.parseInt(heightString);
                        int gender = (checkedId == R.id.radio_male) ? BrocaIndex.MALE : BrocaIndex.FEMALE;
                        BrocaIndex brocaIndex = new BrocaIndex(gender, height);
-                       mListener.onCalculateBrocaIndexClicked(brocaIndex.getIndex());
+                       mListener.onCalculateBrocaIndexClicked(brocaIndex.getIndex(), ResultFragment.Broca_Tag);
                    } else {
                        Toast.makeText(getActivity(), "Please select gender and input your height", Toast.LENGTH_SHORT).show();
                    }
@@ -93,6 +93,6 @@ public class BrocaIndexFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onCalculateBrocaIndexClicked(float index);
+        void onCalculateBrocaIndexClicked(float index, String tag);
     }
 }

@@ -77,20 +77,21 @@ public class MainActivity extends AppCompatActivity implements
 	}
 
     @Override
-    public void onCalculateBrocaIndexClicked(float index) {
+    public void onCalculateBrocaIndexClicked(float index, String tag) {
 		resultFragment.setInformation(String.format("Your ideal weight is %.2f kg", index));
+		resultFragment.setTag(tag);
 		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.fragment_container, resultFragment, "BrocaIndex")
+				.replace(R.id.fragment_container, resultFragment)
 				.commit();
     }
 
 	@Override
 	public void onTryAgainButtonClicked(String tag) {
-		if (tag.equals("BrocaIndex")) {
+		if (tag.equals(ResultFragment.Broca_Tag)) {
 			getSupportFragmentManager().beginTransaction()
 					.replace(R.id.fragment_container, brocaIndexFragment)
 					.commit();
-		} else if (tag.equals("BMI")) {
+		} else if (tag.equals(ResultFragment.Bmi_Tag)) {
 			getSupportFragmentManager().beginTransaction()
 					.replace(R.id.fragment_container, bmiFragment)
 					.commit();
@@ -99,11 +100,11 @@ public class MainActivity extends AppCompatActivity implements
 	}
 
 	@Override
-	public void onCalculateBodyMassIndexButtonClicked(float index, String type) {
+	public void onCalculateBodyMassIndexButtonClicked(float index, String type, String tag) {
 		resultFragment.setInformation(String.format("Your BMI is %.2f (kg) You are categorized as %s", index, type));
+		resultFragment.setTag(tag);
 		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.fragment_container, resultFragment, "BMI")
-				.addToBackStack("BMI")
+				.replace(R.id.fragment_container, resultFragment)
 				.commit();
 	}
 }

@@ -25,8 +25,16 @@ public class ResultFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     private String information;
 
+    public static final String Broca_Tag = "BrocaIndex";
+    public static final String Bmi_Tag = "BMI";
+    private String tag;
+
     public ResultFragment() {
         // Required empty public constructor
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
 
@@ -42,10 +50,11 @@ public class ResultFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (mListener != null) {
-                    mListener.onTryAgainButtonClicked("BrocaIndex");
-                }
-                if (mListener != null) {
-                    mListener.onTryAgainButtonClicked("BMI");
+                    if (tag.equalsIgnoreCase(Broca_Tag)) {
+                        mListener.onTryAgainButtonClicked(Broca_Tag);
+                    } else {
+                        mListener.onTryAgainButtonClicked(Bmi_Tag);
+                    }
                 }
             }
         });

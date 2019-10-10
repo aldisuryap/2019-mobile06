@@ -52,7 +52,7 @@ public class BmiFragment extends Fragment {
                         float height = Float.parseFloat(heightStr);
                         float weight = Float.parseFloat(weightStr);
                         BmiIndex bmi = new BmiIndex(height, weight);
-                        mListener.onCalculateBodyMassIndexButtonClicked(bmi.getIndex(), bmi.getType());
+                        mListener.onCalculateBodyMassIndexButtonClicked(bmi.getIndex(), bmi.getType(), ResultFragment.Bmi_Tag);
                     } else {
                         Toast.makeText(getActivity(), "Input your weight and height please", Toast.LENGTH_SHORT).show();
                     }
@@ -94,6 +94,6 @@ public class BmiFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onCalculateBodyMassIndexButtonClicked(float index, String type);
+        void onCalculateBodyMassIndexButtonClicked(float index, String type, String tag);
     }
 }
